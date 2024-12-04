@@ -17,17 +17,6 @@ USE HospitalManagementDB;
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Table `table1`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `table1` ;
-
-CREATE TABLE IF NOT EXISTS `table1` (
-  `idtable1` INT NOT NULL,
-  PRIMARY KEY (`idtable1`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `Patient`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Patient` ;
@@ -59,7 +48,6 @@ DROP TABLE IF EXISTS `Account` ;
 
 CREATE TABLE IF NOT EXISTS `Account` (
   `account_id` INT NOT NULL AUTO_INCREMENT,
-  `patient_id` INT NULL,
   `creation_date` DATE NULL,
   PRIMARY KEY (`account_id`))
 ENGINE = InnoDB;
@@ -131,7 +119,6 @@ CREATE TABLE IF NOT EXISTS `Nurse` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `Patient`
