@@ -34,9 +34,9 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `Certifications` ;
 
 CREATE TABLE IF NOT EXISTS `Certifications` (
-  `certs_id` INT NOT NULL,
-  `description` VARCHAR(45) NULL,
+  `certs_id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
+  `description` VARCHAR(100) NULL,
   PRIMARY KEY (`certs_id`))
 ENGINE = InnoDB;
 
@@ -58,14 +58,19 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `Emergency Contact` ;
 
-CREATE TABLE IF NOT EXISTS `Emergency Contact` (
+CREATE TABLE IF NOT EXISTS `EmergencyContact` (
   `emergency_contact_id` INT NOT NULL AUTO_INCREMENT,
   `patient_id` INT NOT NULL,
-  `phone_number` INT NULL,
+  `phone_number` BIGINT NULL,
   `relationship` VARCHAR(45) NULL,
   `full_name` VARCHAR(45) NULL,
-  PRIMARY KEY (`emergency_contact_id`))
-ENGINE = InnoDB;
+  PRIMARY KEY (`emergency_contact_id`),
+  CONSTRAINT `fk_emergencycontact_patient`
+    FOREIGN KEY (`patient_id`) REFERENCES `Patient`(`patient_id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+) ENGINE = InnoDB;
+
 
 
 -- -----------------------------------------------------
@@ -74,9 +79,9 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `Specialization` ;
 
 CREATE TABLE IF NOT EXISTS `Specialization` (
-  `specialization_id` INT NOT NULL,
+  `specialization_id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
-  `description` VARCHAR(45) NULL,
+  `description` VARCHAR(100) NULL,
   PRIMARY KEY (`specialization_id`))
 ENGINE = InnoDB;
 
@@ -92,8 +97,7 @@ CREATE TABLE IF NOT EXISTS `Doctor` (
   `first_name` VARCHAR(45) NULL,
   `specialization_id` INT NOT NULL,
   PRIMARY KEY (`doctor_id`),
-  UNIQUE INDEX `specialization_id_UNIQUE` (`specialization_id` ASC) VISIBLE,
-  CONSTRAINT `specialization_id`
+  CONSTRAINT `fk_doctor_specialization_id`
     FOREIGN KEY (`specialization_id`)
     REFERENCES `Specialization` (`specialization_id`)
     ON DELETE NO ACTION
@@ -107,13 +111,13 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `Nurse` ;
 
 CREATE TABLE IF NOT EXISTS `Nurse` (
-  `nurse_id` INT NOT NULL,
+  `nurse_id` INT NOT NULL AUTO_INCREMENT,
   `first_name` VARCHAR(45) NULL,
   `last_name` VARCHAR(45) NULL,
   `certs_id` INT NULL,
   PRIMARY KEY (`nurse_id`),
   UNIQUE INDEX `certs_id_UNIQUE` (`certs_id` ASC) VISIBLE,
-  CONSTRAINT `certs_id`
+  CONSTRAINT `fk_nurse_certs_id`
     FOREIGN KEY (`certs_id`)
     REFERENCES `Certifications` (`certs_id`)
     ON DELETE NO ACTION
@@ -127,35 +131,30 @@ DROP TABLE IF EXISTS `Patient` ;
 
 CREATE TABLE IF NOT EXISTS `Patient` (
   `patient_id` INT NOT NULL AUTO_INCREMENT,
-  `account_id` INT NOT NULL,
+  `full_name` VARCHAR(45) NULL,
   `DOB` DATE NULL,
+  `age` INT,
+  `account_id` INT NOT NULL,
   `emergency_contact_id` INT NULL,
   `medical_record_id` INT NULL,
   `doctor_id` INT NULL,
   `nurse_id` INT NOT NULL,
-  `age` INT NULL,
-  `full_name` VARCHAR(45) NULL,
   PRIMARY KEY (`patient_id`, `account_id`),
   INDEX `account_id_idx` (`account_id` ASC) VISIBLE,
   INDEX `doctor_id_idx` (`doctor_id` ASC) VISIBLE,
   INDEX `emergency_contact_id_idx` (`emergency_contact_id` ASC) VISIBLE,
   INDEX `nurse_id_idx` (`nurse_id` ASC) VISIBLE,
-  CONSTRAINT `account_id`
+  CONSTRAINT `fk_patient_account_id`
     FOREIGN KEY (`account_id`)
     REFERENCES `Account` (`account_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `emergency_contact_id`
-    FOREIGN KEY (`emergency_contact_id`)
-    REFERENCES `Emergency Contact` (`emergency_contact_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `doctor_id`
+  CONSTRAINT `fk_patient_doctor_id`
     FOREIGN KEY (`doctor_id`)
     REFERENCES `Doctor` (`doctor_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `nurse_id`
+  CONSTRAINT `fk_patient_nurse_id`
     FOREIGN KEY (`nurse_id`)
     REFERENCES `Nurse` (`nurse_id`)
     ON DELETE NO ACTION
@@ -188,8 +187,8 @@ DROP TABLE IF EXISTS `Payment` ;
 
 CREATE TABLE IF NOT EXISTS `Payment` (
   `payment_id` INT NOT NULL AUTO_INCREMENT,
-  `full_name` VARCHAR(45) NULL,
-  `card_number` INT NOT NULL,
+  `full_name` VARCHAR(100) NULL,
+  `card_number` BIGINT NOT NULL,
   `account_id` INT NOT NULL,
   PRIMARY KEY (`payment_id`),
   CONSTRAINT `fk_account_id`
@@ -206,7 +205,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `Medication` ;
 
 CREATE TABLE IF NOT EXISTS `Medication` (
-  `medication_id` INT NOT NULL,
+  `medication_id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `instructions` VARCHAR(45) NULL,
   PRIMARY KEY (`medication_id`))
@@ -219,7 +218,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `Prescription` ;
 
 CREATE TABLE IF NOT EXISTS `Prescription` (
-  `presc_id` INT NOT NULL,
+  `presc_id` INT NOT NULL AUTO_INCREMENT,
   `doctor_id` INT NOT NULL,
   `medication_id` INT NOT NULL,
   `patient_id` INT NOT NULL,
@@ -253,7 +252,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `Diagnosis` ;
 
 CREATE TABLE IF NOT EXISTS `Diagnosis` (
-  `diagnosis_id` INT NOT NULL,
+  `diagnosis_id` INT NOT NULL AUTO_INCREMENT,
   `patient_id` INT NULL,
   `doctor_id` INT NULL,
   `name` VARCHAR(45) NULL,
@@ -279,9 +278,9 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `Department` ;
 
 CREATE TABLE IF NOT EXISTS `Department` (
-  `dept_id` INT NOT NULL,
-  `phone_number` INT NULL,
+  `dept_id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
+  `phone_number` VARCHAR(15) NULL,
   PRIMARY KEY (`dept_id`))
 ENGINE = InnoDB;
 
@@ -292,7 +291,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `Rooms` ;
 
 CREATE TABLE IF NOT EXISTS `Rooms` (
-  `room_id` INT NOT NULL,
+  `room_id` INT NOT NULL AUTO_INCREMENT,
   `nurse_id` INT NULL,
   `number` INT NULL,
   `dept_id` INT NULL,
@@ -318,11 +317,11 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `Appointments` ;
 
 CREATE TABLE IF NOT EXISTS `Appointments` (
-  `appt_id` INT NOT NULL,
+  `appt_id` INT NOT NULL AUTO_INCREMENT,
   `patient_id` INT NULL,
   `doctor_id` INT NULL,
-  `reason_for_visit` VARCHAR(45) NULL,
-  `date_time` VARCHAR(45) NULL,
+  `reason_for_visit` VARCHAR(100) NULL,
+  `date_time` DATETIME NULL,
   PRIMARY KEY (`appt_id`),
   CONSTRAINT `fk_appointments_patient_id`  
     FOREIGN KEY (`patient_id`)  
@@ -343,7 +342,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `Bill` ;
 
 CREATE TABLE IF NOT EXISTS `Bill` (
-  `bill_id` INT NOT NULL,
+  `bill_id` INT NOT NULL AUTO_INCREMENT,
   `appt_id` INT NOT NULL,
   `payment_id` INT NOT NULL,
   `due_date` DATE NULL,
@@ -394,7 +393,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `Medical Records` ;
 
 CREATE TABLE IF NOT EXISTS `Medical Records` (
-  `patient_id` INT NOT NULL,
+  `patient_id` INT NOT NULL AUTO_INCREMENT,
   `doctor_id` INT NULL,
   `date` DATE NULL,
   INDEX `patient_id_idx` (`patient_id` ASC) VISIBLE,
@@ -418,10 +417,10 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `Parent` ;
 
 CREATE TABLE IF NOT EXISTS `Parent` (
-  `parent_id` INT NOT NULL,
+  `parent_id` INT NOT NULL AUTO_INCREMENT,
+  `patient_id` INT NOT NULL,
   `occupation` VARCHAR(45) NULL,
   `relationship_to_child` VARCHAR(45) NULL,
-  `patient_id` INT NOT NULL,
   PRIMARY KEY (`parent_id`),
   UNIQUE INDEX `patient_id_UNIQUE` (`patient_id` ASC) VISIBLE,
   CONSTRAINT `fk_parent_patient_id`
@@ -439,8 +438,8 @@ DROP TABLE IF EXISTS `Child` ;
 
 CREATE TABLE IF NOT EXISTS `Child` (
   `patient_id` INT NOT NULL,
-  `grade_level` INT NULL,
   `parent_id` INT NOT NULL,
+  `grade_level` INT NULL,
   CONSTRAINT `fk_child_patient_id`
     FOREIGN KEY (`patient_id`)
     REFERENCES `Patient` (`patient_id`)
