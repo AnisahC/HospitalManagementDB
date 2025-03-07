@@ -1,18 +1,9 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/M2fsb0jO)
-# Welcome to CSC675-775 Database Systems
-
-**IMPORTANT: It is the student's responsibility to read and follow all guidelines and instructions provided in all README files found in this repository.**
+# Hospital Management Database
 
 <hr style="border: 2px solid black;" />
 
-## TODO
-
-Please fill in the information below by the second Monday of the semester at 9:00 pm. By entering your details in this table, you confirm that you are the owner of this repository and that you have selected a database topic.
-
-
-| Student ID           | Student Full Name       | SFSU Email            |Database Topic                                                             |
-|:---------------------:|:---------------------------:|:---------------------------:|:-------------------------------------------------------------------------:|
-|      921677676        | Anisah Chowdhury            | achowdhury1@sfsu.edu        |       Hospital Management System
+## Introduction
+This project is an SQL-based hospital management database that includes all necessary entities to support hospital operations. The database is designed to store and manage information related to patients, doctors, appointments, medical records, billing, and more. Additionally, it includes business requirements such as triggers and stored procedures to handle concurrency issues and ensure data integrity.
 
 Please choose a topic from this **[list of topics](milestones/res/TOPICS.md)** for the database system
 you will create in this class.
