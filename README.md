@@ -1,95 +1,31 @@
 # Hospital Management Database
 
-<hr style="border: 2px solid black;" />
+<hr style="border: 5px solid black;" />
 
 ## Introduction
 This project is an SQL-based hospital management database that includes all necessary entities to support hospital operations. The database is designed to store and manage information related to patients, doctors, appointments, medical records, billing, and more. Additionally, it includes business requirements such as triggers and stored procedures to handle concurrency issues and ensure data integrity.
 
-Please choose a topic from this **[list of topics](milestones/res/TOPICS.md)** for the database system
-you will create in this class.
+## Features
+**Patient Management** – Stores patient details such as name, date of birth, contact information, and medical history.
 
-Once you select a database topic, **you cannot change it.
-You can only choose from the topics listed.
-If you want to suggest a topic not on the list,
-you must discuss it with the instructor and get approval before you proceed.
+**Doctor Management** – Maintains records of doctors, their specializations, assigned departments, and availability.
 
+**Appointments Scheduling** – Tracks and manages patient appointments with doctors, preventing double booking through constraints and stored procedures.
 
-**IMPORTANT:**
-   - Any student who does not adhere to this deadline may be automatically dropped from the course to make room for students on the waiting list.
-   - Remember to add your name in the copyright notice, at the bottom of this page, to protect your work
+**Concurrency Handling** – Implements triggers and stored procedures to prevent data conflicts, such as duplicate entries or overlapping appointments.
 
----
+**Data Integrity & Security** – Enforces primary keys, foreign keys, and constraints to maintain accuracy and consistency across all tables.
 
-## Repository Content
+**Data Normalization** – The database follows normalization techniques (up to 3NF) to eliminate redundancy, ensure efficient data storage, and improve query performance.
 
-All work in this repository is divided into five milestones, which collectively account for 40% of your final grade. 
-
-
-| Milestone  | Description                                               | Weight |
-|------------|-----------------------------------------------------------|--------|
-| 1          | Use Cases and Database Requirements                       | 3%     |
-| 2          | DB Conceptual Design                                      | 12%    |
-| 3          | DB Modeling and Normalization                             | 10%    |
-| 4          | Sample Data, Business Requirements, and ORM Design Plan   | 10%    |
-| 5          | ORM Implementation, User Interface, and Remote DB Hosting | 5%     |
+## Repository Contents
+#### This repository contains the following files and folders:
+- Documentation.pdf: includes the project description, detailing the purpose and design of the database, as well as the functional requirements, which outline the key features the database must support. The document also covers non-functional requirements, including performance, security, and scalability expectations. Additionally, it contains diagrams, including the Entity Relationship Diagram (ERD), to visually represent the database schema and the relationships between different entities.
+-  Files/: contains the necessary scripts and diagrams to manage the database
+     - databasemodel.sql
+     - inserts.sql
+     - eer. 
 
 
----
-
-## Submission and Grading Policies
-
-At the bottom of every main README file included in your milestones directory, you will find the submission and grading policies for each milestone. The instructor and TAs will adhere strictly to these guidelines when grading your assignments. Please make sure to read them as soon as a milestone is assigned so that you understand what is expected of you.
-
-Below are the general policies regarding milestones for the course, which can also be found in the syllabus:
-
-> Make sure all your work is committed to the `master` branch of your repository. Only work in the `master` branch will be graded. No exceptions!
-
-- Only assignments uploaded to both Canvas **and** the GitHub repository created for this class will be considered for grading.
-- All assignments are due on the designated due date as specified by the instructor. It is the student’s responsibility 
-  to keep track of all assignments due dates and plan accordingly.
-- There will be no make-up milestone assignments in this course under any circumstances, except for extenuating 
-  situations such as hospitalization, other serious events beyond the student’s control, or DPRC-approved accommodations 
-  regarding milestone assignments. In such cases, documentation will be required as evidence.
-- Students are responsible for what they submit. If you submit a blank assignment, it will be graded as such. 
-  Always double-check your submissions to ensure that what you intended to upload is actually what you uploaded.
-- Late milestone submissions will be subject to penalties. A 10% deduction will be applied for each day the assignment 
-  is overdue, up to a maximum of three days. After three days, the assignment will be considered not submitted and will 
-  receive a grade of zero. It is imperative that students adhere to the specified deadlines, as failing to do so will 
-  result in a reduction of their assignment scores. This policy is designed to emphasize the importance 
-  of timely and responsible submission of coursework while providing a reasonable window for unforeseen circumstances. 
-  Students are strongly encouraged to manage their time effectively to avoid unnecessary deductions and to ensure the
-  best possible academic outcomes. This policy applies to all milestone assignments in this course **except** for the 
-  last milestone assignment of the semester. The instructor will be unable to accept late work for the last milestone 
-  assignment due to the time constraints at the end of the semester.
-- Work committed to personal repositories will not be considered for grading. All work for this course must be 
-  committed to the remote repository created in class using the link provided by the instructor. No exceptions!
-
-
-## Grade Appeal
-
-- Students may request a grade revision for their milestone assignments, quizzes, or exams up to one week after the 
-  grades for that assignment are posted in Canvas. To request a revision, students must: (1) schedule office hours 
-  with the instructor for the review, and (2) demonstrate that points were deducted by mistake. After this one-week 
-  period, the assigned grade for that assignment becomes final, and no further revisions will be made under any circumstances.
-
---- 
-
-> **Remember: Hard work now means less stress later plus, you'll impress yourself with how awesome your project turns out! 🚀😎🎉**
-
----
-
-© 2024 [Your full name here]. All rights reserved.
-
-No part of this repository may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the instructor or team.
-
-
-
-
-
-
-
-
-
- 
 
 
