@@ -24,7 +24,9 @@ This project is an SQL-based hospital management database that includes all nece
 -  Files/: contains the necessary scripts and diagrams to manage the database
      - databasemodel.sql
      - inserts.sql
-     - eer. 
+     - eer.mwb
+     - erd.drawio.png
+     - inserts.sql
 
 
 
