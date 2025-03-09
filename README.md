@@ -22,11 +22,14 @@ This project is an SQL-based hospital management database that includes all nece
 #### This repository contains the following files and folders:
 - Documentation.pdf: includes the project description, detailing the purpose and design of the database, as well as the functional requirements, which outline the key features the database must support. The document also covers non-functional requirements, including performance, security, and scalability expectations. Additionally, it contains diagrams, including the Entity Relationship Diagram (ERD), to visually represent the database schema and the relationships between different entities.
 -  Files/: contains the necessary scripts and diagrams to manage the database
-     - databasemodel.sql
-     - inserts.sql
-     - eer.mwb
-     - erd.drawio.png
-     - business_requirements.sql
+     - databasemodel.sql: defines the structure of the database, 
+       including table creation, primary and foreign key 
+       constraints, data types, and relationships between entities.
+     - inserts.sql: populates tables with sample data
+     - eer.mwb: Enhanced Entity Relationship Diagram
+     - erd.drawio.png: Entity Relationship Diagram
+     - business_requirements.sql: implement business rules and             constraints for the hospital management database. This 
+       includes triggers, stored procedures, and constraints.
 
 
 
